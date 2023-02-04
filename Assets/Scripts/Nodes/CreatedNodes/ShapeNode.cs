@@ -21,9 +21,12 @@ public class ShapeNode : Node
 
     public override List<NOutput> outputs { get; protected set; } = new List<NOutput>();
 
+    private bool hasInitialized = false;
+    
     public override void Init()
     {
-        outputs = new List<NOutput>() { new NOutput("Partial Object", typeof(PartialObject), this) };
+        if(!hasInitialized) outputs = new List<NOutput>() { new NOutput("Partial Object", typeof(PartialObject), this) };
+        hasInitialized = true;
     }
 
     public override object OnExecute()

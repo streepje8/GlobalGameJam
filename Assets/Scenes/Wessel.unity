@@ -956,6 +956,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5026187659970703746, guid: f2f3f7cfd7f5fb747b2af6559434cf69,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392199853322467868, guid: f2f3f7cfd7f5fb747b2af6559434cf69,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7392199853362405094, guid: f2f3f7cfd7f5fb747b2af6559434cf69,
         type: 3}
       propertyPath: m_Name

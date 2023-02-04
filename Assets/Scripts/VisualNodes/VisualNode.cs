@@ -29,6 +29,7 @@ public class VisualNode : MonoBehaviour
     public VisualNode SetNode(Node n)
     {
         node = n;
+        GameController.Instance.editor.visuals.Add(n,this);
         if(!node.isInitialized) {node.Init(); node.isInitialized = true; }
         UpdateUI();
         return this;
@@ -37,6 +38,21 @@ public class VisualNode : MonoBehaviour
     private void Update()
     {
         ((RectTransform)transform).localPosition = Vector3.Lerp(((RectTransform)transform).localPosition, goalPos, 30f * Time.deltaTime);
+    }
+
+    private Dictionary<string, IOComponent> niocIn = new Dictionary<string, IOComponent>();
+    private Dictionary<string, IOComponent> niocOut = new Dictionary<string, IOComponent>();
+    
+    public IOComponent GetIOC(NInput NIn)
+    {
+        if (niocIn.TryGetValue(NIn.guid.ToString(), out IOComponent val)) return val;
+        return null;
+    }
+
+    public IOComponent GetIOC(NOutput NOut)
+    {
+        if (niocOut.TryGetValue(NOut.guid.ToString(), out IOComponent val)) return val;
+        return null;
     }
 
     void UpdateUI()
@@ -53,12 +69,17 @@ public class VisualNode : MonoBehaviour
         //Do the controlls
         settingsArea.sizeDelta = Vector2.zero;
 
+        niocIn = new Dictionary<string, IOComponent>();
+        niocOut = new Dictionary<string, IOComponent>();
+
         node.inputs.ForEach(x =>
         {
             IOComponent IOC = Instantiate(InputPrefab, IOArea).GetComponent<IOComponent>();
             IOC.type = IO.Input;
             IOC.label.text = x.name;
             IOC.input = x;
+            IOC.node = node;
+            niocIn.Add(x.guid.ToString(),IOC);
         });
         node.outputs.ForEach(x =>
         {
@@ -66,6 +87,8 @@ public class VisualNode : MonoBehaviour
             IOC.type = IO.Output;
             IOC.label.text = x.name;
             IOC.output = x;
+            IOC.node = node;
+            niocOut.Add(x.guid.ToString(),IOC);
         });
 
         images.ForEach(x => x.color = nodeColor);
