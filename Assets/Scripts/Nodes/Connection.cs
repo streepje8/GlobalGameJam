@@ -1,14 +1,14 @@
 public class Connection
 {
-    public Input input;
-    public Output output;
+    public NInput nInput;
+    public NOutput nOutput;
 
-    public Connection(Input input, Output output)
+    public Connection(NInput nInput, NOutput nOutput)
     {
-        this.input = input;
-        this.output = output;
+        this.nInput = nInput;
+        this.nOutput = nOutput;
     }
     
-    public bool CanGetData<T>() => output.node.Execute<T>().Item1;
-    public T GetData<T>() => output.node.Execute<T>().Item2;
+    public bool CanGetData<T>() => nOutput.node.Execute<T>().Item1;
+    public T GetData<T>() => nOutput.node.Execute<T>().Item2;
 }

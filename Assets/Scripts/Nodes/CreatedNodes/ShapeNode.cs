@@ -1,28 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ShapeNode : Node
 {
-    public List<Control> controls = new List<Control>()
+    public override List<Control> controls { get; } = new List<Control>()
     {
-        new MeshControl("Shape",null)
+        new MeshControl("Shape", null)
     };
 
-    public override List<Input> inputs
+    public override List<NInput> inputs
     {
         get =>
-            new List<Input>()
+            new List<NInput>()
             {
-                new Input("Scale", typeof(Vector3), Vector3.one),
-                new Input("Material", typeof(Material))
+                new NInput("Scale", typeof(Vector3), Vector3.one),
+                new NInput("Material", typeof(Material))
             };
     }
 
-    public override List<Output> outputs { get; protected set; }
+    public override List<NOutput> outputs { get; protected set; }
 
     public override void Init()
     {
-        outputs = new List<Output>() { new Output("Partial Object", typeof(PartialObject), this) };
+        outputs = new List<NOutput>() { new NOutput("Partial Object", typeof(PartialObject), this) };
     }
 
     public override object OnExecute()

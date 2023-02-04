@@ -1,12 +1,12 @@
 using System;
 
-public class Output
+public class NOutput
 {
     public string name;
     public Node node;
     public Type expectedType;
 
-    public Output(string name, Type type, Node outputter)
+    public NOutput(string name, Type type, Node outputter)
     {
         this.name = name;
         expectedType = type;

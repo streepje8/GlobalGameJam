@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[Serializable]
 public abstract class Node
 {
-    public abstract List<Input> inputs { get;}
-    public abstract List<Output> outputs { get; protected set; }
+    public abstract List<Control> controls { get; }
+    public abstract List<NInput> inputs { get;}
+    public abstract List<NOutput> outputs { get; protected set; }
     public List<Connection> connections = new List<Connection>();
     public bool isInitialized = false;
 
@@ -27,8 +29,8 @@ public abstract class Node
 
     public abstract object OnExecute();
 
-    public Connection FindConnection(Input i)
+    public Connection FindConnection(NInput i)
     {
-        return connections.FirstOrDefault(x => x.input == i);
+        return connections.FirstOrDefault(x => x.nInput == i);
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public class NodeGraph
 {
     public RootNode rootNode = new RootNode();

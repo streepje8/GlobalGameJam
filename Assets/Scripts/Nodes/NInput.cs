@@ -1,12 +1,12 @@
 using System;
 
-public class Input
+public class NInput
 {
     public string name;
     public Type type;
     public object defaultValue;
 
-    public Input(string name, Type type, object defaultValue = null)
+    public NInput(string name, Type type, object defaultValue = null)
     {
         this.name = name;
         this.type = type;
