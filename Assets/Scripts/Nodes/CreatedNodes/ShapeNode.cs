@@ -19,7 +19,7 @@ public class ShapeNode : Node
             };
     }
 
-    public override List<NOutput> outputs { get; protected set; }
+    public override List<NOutput> outputs { get; protected set; } = new List<NOutput>();
 
     public override void Init()
     {
