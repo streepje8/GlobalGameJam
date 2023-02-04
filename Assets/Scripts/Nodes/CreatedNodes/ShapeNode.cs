@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 public class ShapeNode : Node
 {
@@ -10,13 +8,19 @@ public class ShapeNode : Node
         new MeshControl("Shape",null)
     };
 
-    public new List<Input> inputs = new List<Input>()
+    public override List<Input> inputs
     {
-        new Input("Scale", typeof(Vector3), Vector3.one),
-        new Input("Material", typeof(Material))
-    };
+        get =>
+            new List<Input>()
+            {
+                new Input("Scale", typeof(Vector3), Vector3.one),
+                new Input("Material", typeof(Material))
+            };
+    }
 
-    public ShapeNode()
+    public override List<Output> outputs { get; protected set; }
+
+    public override void Init()
     {
         outputs = new List<Output>() { new Output("Partial Object", typeof(PartialObject), this) };
     }
