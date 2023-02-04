@@ -9,7 +9,7 @@ public class RootNode : Node
     {
         ConstructedObject endResult = new ConstructedObject();
         if(connections.Count > 0) {
-            endResult.AddObject(connections[0].GetData<PartialObject>());
+            endResult.AddObject(connections[0].GetData<PartialObjectBuild>());
         }
         return endResult;
     }

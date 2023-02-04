@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using UnityEngine;
 
 public abstract class Node
 {
@@ -14,10 +16,10 @@ public abstract class Node
         T result = default;
         try
         {
-            result = (T)Convert.ChangeType(OnExecute(), typeof(T));
+            result = (T)OnExecute();
             wasUnsafe = false;
         }
-        catch (InvalidCastException e) { wasUnsafe = true; }
+        catch (InvalidCastException e) { wasUnsafe = true; Debug.LogError("Oopsie woopsie, the code is stukkie wukkie! Deze nodes hadden nooit geconnect moeten zijn ＼（〇_ｏ）／");}
         return new Tuple<bool, T>(wasUnsafe,result);
     }
 

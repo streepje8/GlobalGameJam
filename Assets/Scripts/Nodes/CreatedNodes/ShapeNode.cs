@@ -19,14 +19,14 @@ public class ShapeNode : Node
     public ShapeNode()
     {
         outputs = new List<Output>() { new Output("Partial Object", typeof(PartialObject), this) };
-    
+    }
 
     public override object OnExecute()
     {
         MeshPartialObject partialObject = new MeshPartialObject();
         partialObject.scale = FindConnection(inputs[0])?.GetData<Vector3>() ?? (Vector3)inputs[0].defaultValue;
-        partialObject.mat = FindConnection(inputs[0])?.GetData<Material>() ?? (Material)inputs[0].defaultValue;
-        return (PartialObject)partialObject;
+        partialObject.mat = FindConnection(inputs[1])?.GetData<Material>() ?? (Material)inputs[1].defaultValue;
+        return partialObject.Build();
     }
 }
 
@@ -38,7 +38,8 @@ public class MeshPartialObject : PartialObject
         
     public override void Create(Transform parent)
     {
-        GameObject myHolder = Object.Instantiate(new GameObject(), parent);
+        GameObject myHolder = new GameObject("ShapeNodeObject");
+        myHolder.transform.SetParent(parent);
         MeshRenderer mr = myHolder.AddComponent<MeshRenderer>();
         mr.material = mat;
         MeshFilter filter = myHolder.AddComponent<MeshFilter>();
