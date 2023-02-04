@@ -21,10 +21,10 @@ public class NodeEditor : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
-            boi.gameObject.SetActive(false); 
-            obj = null; 
-            RegenerateUI();
+        if(Input.GetKeyDown(KeyCode.Escape) && obj != null) {
+            boi.gameObject.SetActive(false);
+            obj.ReEvaluateGraph();
+            obj = null; RegenerateUI();
             GameController.Instance.controller.enabled = true;
             isOpen = false;
             Cursor.lockState = CursorLockMode.Locked;
