@@ -26,16 +26,17 @@ public class VisualNode : MonoBehaviour
         goalPos = ((RectTransform)transform).localPosition;
     }
 
-    public void SetNode(Node n)
+    public VisualNode SetNode(Node n)
     {
         node = n;
         if(!node.isInitialized) {node.Init(); node.isInitialized = true; }
         UpdateUI();
+        return this;
     }
 
     private void Update()
     {
-        ((RectTransform)transform).localPosition = Vector3.Lerp(((RectTransform)transform).localPosition, goalPos, 10f * Time.deltaTime);
+        ((RectTransform)transform).localPosition = Vector3.Lerp(((RectTransform)transform).localPosition, goalPos, 30f * Time.deltaTime);
     }
 
     void UpdateUI()

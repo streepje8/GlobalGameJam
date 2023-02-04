@@ -5,7 +5,7 @@ public class RaycastInteractor : MonoBehaviour
     public LayerMask interactionLayer;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !GameController.Instance.editor.isOpen)
         {
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity,
                     interactionLayer))
