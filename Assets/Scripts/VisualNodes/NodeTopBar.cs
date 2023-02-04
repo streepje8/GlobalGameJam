@@ -9,6 +9,6 @@ public class NodeTopBar : MonoBehaviour,IDragHandler
         Vector2 mouseUV = GameController.Instance.highResCam.ScreenToViewportPoint(eventData.position);
         mouseUV *= new Vector2(1920, 1080);
         mouseUV -= new Vector2(1920 / 2f, 1080 / 2f);
-        visualNode.Move(mouseUV);
+        if(!visualNode.node.isLocked) visualNode.Move(mouseUV);
     }
 }

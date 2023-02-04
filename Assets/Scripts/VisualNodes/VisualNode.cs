@@ -29,6 +29,8 @@ public class VisualNode : MonoBehaviour
     public VisualNode SetNode(Node n)
     {
         node = n;
+        nodeColor = node.color;
+        if (node.isLocked) nodeColor = Color.grey;
         GameController.Instance.editor.visuals.Add(n,this);
         if(!node.isInitialized) {node.Init(); node.isInitialized = true; }
         UpdateUI();
@@ -79,6 +81,7 @@ public class VisualNode : MonoBehaviour
             IOC.label.text = x.name;
             IOC.input = x;
             IOC.node = node;
+            IOC.Init();
             niocIn.Add(x.guid.ToString(),IOC);
         });
         node.outputs.ForEach(x =>
@@ -88,6 +91,7 @@ public class VisualNode : MonoBehaviour
             IOC.label.text = x.name;
             IOC.output = x;
             IOC.node = node;
+            IOC.Init();
             niocOut.Add(x.guid.ToString(),IOC);
         });
 

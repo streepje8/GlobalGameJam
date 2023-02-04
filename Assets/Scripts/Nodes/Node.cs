@@ -6,7 +6,8 @@ using UnityEngine;
 [Serializable]
 public abstract class Node
 {
-    public abstract List<Control> controls { get; }
+    public bool isLocked = false;
+    public Color color = Color.blue;
     public abstract List<NInput> inputs { get;}
     public abstract List<NOutput> outputs { get; protected set; }
     public List<Connection> connections = new List<Connection>();

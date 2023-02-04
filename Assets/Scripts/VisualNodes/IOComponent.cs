@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,6 +23,20 @@ public class IOComponent : MonoBehaviour,
     public Node node;
     public bool Connected { get; private set; }
 
+    private Dictionary<Type, Color> colors = new Dictionary<Type, Color>()
+    {
+        { typeof(Vector3), Color.magenta },
+        { typeof(PartialObject), Color.green},
+        { typeof(ConstructedObject), Color.green},
+        { typeof(float), Color.blue}
+    };
+
+    public void Init()
+    {
+        Type t = input?.type ?? output.expectedType;
+        if (colors.Keys.Contains(t)) cirkel.color = colors[t];
+    }
+    
     public void SetConnected(bool b)
     {
         this.Connected = b;
@@ -28,28 +45,33 @@ public class IOComponent : MonoBehaviour,
     public void OnPointerClick(PointerEventData eventData)
     {
         switch (type)
-        {
-            case IO.Input:
-                if (Connected)
-                {
-                    connection.Disconnect();
-                    GameController.Instance.editor.RegenerateUI();
-                }
-                else
-                {
-                    if (GameController.Instance.editor.isConnecting)
+            {
+                case IO.Input:
+                    if (!node.isLocked)
                     {
-                        GameController.Instance.editor.FinishConnection(this);
+                        if (Connected)
+                        {
+                            connection.Disconnect();
+                            GameController.Instance.editor.RegenerateUI();
+                        }
+                        else
+                        {
+                            if (GameController.Instance.editor.isConnecting)
+                            {
+                                GameController.Instance.editor.FinishConnection(this);
+                            }
+                        }
                     }
-                }
-                break;
-            case IO.Output:
-                if (!Connected)
-                {
-                    GameController.Instance.editor.StartConnection(this);
-                }
-                break;
-        }
+
+                    break;
+                case IO.Output:
+                    if (!Connected)
+                    {
+                        GameController.Instance.editor.StartConnection(this);
+                    }
+
+                    break;
+            }
     }
 
     public void SetConnection(VNodeConnection vNodeConnection)
