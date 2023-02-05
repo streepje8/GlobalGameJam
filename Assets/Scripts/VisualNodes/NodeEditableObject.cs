@@ -5,7 +5,8 @@ public enum StartGraph
     Cube,
     Cylinder,
     Capsule,
-    Sphere
+    Sphere,
+    PlantDoor
 }
 
 public class NodeEditableObject : MonoBehaviour, IInteractable
@@ -47,10 +48,23 @@ public class NodeEditableObject : MonoBehaviour, IInteractable
                 graph.AddNode(spn);
                 graph.Connect(spn,0,graph.rootNode,0);
                 break;
+            case StartGraph.PlantDoor:
+                graph.rootNode.isLocked = true;
+                DoorNode doorNode = new DoorNode();
+                IntNode hasDoorHandleNode = new IntNode(0);
+                MaterialNode doorMatNode = new MaterialNode();
+                IntNode materialInt = new IntNode(1);
+                graph.AddNode(doorNode); graph.AddNode(hasDoorHandleNode); graph.AddNode(doorMatNode); graph.AddNode(materialInt);
+                graph.Connect(doorNode,0,graph.rootNode,0);
+                graph.Connect(doorMatNode,0,doorNode,1);
+                graph.Connect(hasDoorHandleNode,0,doorNode,0);
+                graph.Connect(materialInt,0,doorMatNode,0);
+                break;
         }
         currentGameObject = graph.ExecuteGraph().Create();
         currentGameObject.transform.SetParent(transform);
         currentGameObject.transform.position = transform.position;
+        currentGameObject.transform.rotation = transform.rotation;
     }
 
     public void OnInteract()
@@ -64,5 +78,6 @@ public class NodeEditableObject : MonoBehaviour, IInteractable
         currentGameObject = graph.ExecuteGraph().Create();
         currentGameObject.transform.SetParent(transform);
         currentGameObject.transform.position = transform.position;
+        currentGameObject.transform.rotation = transform.rotation;
     }
 }

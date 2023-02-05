@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1125476682103765257}
   - component: {fileID: 1125476682103765258}
+  - component: {fileID: 2769146452828707597}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -47,3 +48,26 @@ MonoBehaviour:
   editor: {fileID: 0}
   controller: {fileID: 0}
   highResCam: {fileID: 0}
+  meshDatabase: {fileID: 2769146452828707597}
+--- !u!114 &2769146452828707597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125476682103765259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d8a6912124e8f4288a872c8a8fa4cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshes:
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 6604138602885514005, guid: 58fd2548d1701a84fa362c1658bcfed4, type: 3}
+  - {fileID: 6131596681922455646, guid: 94bbeaaae736813439a109c79ebc9787, type: 3}
+  materials:
+  - {fileID: 2100000, guid: 08ea5996c1973a448a8137094d23eaaa, type: 2}
+  - {fileID: 2100000, guid: d0cb2443c2999a243ab7b67f0285badb, type: 2}

@@ -1,5 +1,70 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &450083700878556125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5279926723461646647}
+  - component: {fileID: 496223230807040692}
+  - component: {fileID: 4663532379132909420}
+  m_Layer: 3
+  m_Name: DoorNodeSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5279926723461646647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450083700878556125}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: -1.21, y: -0.09000015, z: 0.2397232}
+  m_LocalScale: {x: 0.57632935, y: 0.57632947, z: 0.57632947}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3555882003903483290}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 270, y: 180, z: 0}
+--- !u!65 &496223230807040692
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450083700878556125}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.84, y: 1.26, z: 6.65}
+  m_Center: {x: 0.08, y: 0, z: 0}
+--- !u!114 &4663532379132909420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450083700878556125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae408ebd31d876c4c8a701233e9f3475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph:
+    rootNode:
+      isLocked: 1
+      color: {r: 0, g: 0, b: 1, a: 1}
+      isInitialized: 0
+  startGraphID: 4
+  currentGameObject: {fileID: 0}
 --- !u!1 &3555882003903483292
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +75,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3555882003903483290}
   - component: {fileID: 3555882003903483293}
-  m_Layer: 0
+  - component: {fileID: 7046660358497254862}
+  m_Layer: 3
   m_Name: PIvotParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,6 +96,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3808798040885205734}
+  - {fileID: 5279926723461646647}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,8 +112,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66343b0306234ec4aba099e5f4eb1b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openPos: {x: 0, y: 90, z: 0}
   isOpen: 0
   speed: 1
+--- !u!65 &7046660358497254862
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555882003903483292}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.44, y: 3.42, z: 0.37}
+  m_Center: {x: -1.29, y: 0, z: 0}
 --- !u!1001 &3555882004739809158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,22 +173,22 @@ PrefabInstance:
     - target: {fileID: 397045144329831776, guid: 3e1d74e283083584596e42c7d853dc1d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 397045144329831776, guid: 3e1d74e283083584596e42c7d853dc1d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 397045144329831776, guid: 3e1d74e283083584596e42c7d853dc1d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 397045144329831776, guid: 3e1d74e283083584596e42c7d853dc1d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 397045144329831776, guid: 3e1d74e283083584596e42c7d853dc1d,
         type: 3}
@@ -117,7 +198,7 @@ PrefabInstance:
     - target: {fileID: 397045144329831776, guid: 3e1d74e283083584596e42c7d853dc1d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 397045144329831776, guid: 3e1d74e283083584596e42c7d853dc1d,
         type: 3}

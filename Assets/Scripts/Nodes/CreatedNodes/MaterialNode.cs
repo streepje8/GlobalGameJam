@@ -13,6 +13,7 @@ public class MaterialNode : Node
 
     public override object OnExecute()
     {
-        return GameController.Instance.meshDatabase.materials[connections[0].GetData<int>()];
+        int matnum = connections[0].GetData<int>();
+        return GameController.Instance.meshDatabase.materials[matnum];
     }
 }

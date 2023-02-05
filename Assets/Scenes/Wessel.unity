@@ -294,31 +294,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
---- !u!1 &475308764 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1125476682103765259, guid: 48571091508c4c24281037fbe8214ad0,
+--- !u!114 &475308767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2769146452828707597, guid: 48571091508c4c24281037fbe8214ad0,
     type: 3}
   m_PrefabInstance: {fileID: 1125476682167426007}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &475308767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475308764}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54d8a6912124e8f4288a872c8a8fa4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshes:
-  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  - {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
-  - {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-  - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  materials:
-  - {fileID: 2100000, guid: 08ea5996c1973a448a8137094d23eaaa, type: 2}
 --- !u!114 &652913437 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7392199853224098932, guid: f2f3f7cfd7f5fb747b2af6559434cf69,
