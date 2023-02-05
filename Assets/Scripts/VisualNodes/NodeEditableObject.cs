@@ -9,7 +9,8 @@ public enum StartGraph
     Sphere,
     PlantDoor,
     Lights,
-    Wall
+    Wall,
+    ENDING
 }
 
 public class NodeEditableObject : MonoBehaviour, IInteractable
@@ -98,6 +99,16 @@ public class NodeEditableObject : MonoBehaviour, IInteractable
                 graph.Connect(scaleVecNode,0,wallNode,0); //Vec3 -> Vec3
                 graph.Connect(wallMatNode,0,wallNode,1); //Mat -> Mat
                 graph.Connect(wallMatIndex,0,wallMatNode,0); //Int -> Int
+                break;
+            case StartGraph.ENDING:
+                graph.rootNode.isLocked = true;
+                Congrats cccc = new Congrats();
+                You yyyy = new You();
+                Win wwww = new Win();
+                graph.AddNode(cccc); graph.AddNode(yyyy); graph.AddNode(wwww);
+                graph.Connect(wwww,0,graph.rootNode,0);
+                graph.Connect(yyyy,0,wwww,0);
+                graph.Connect(cccc,0,yyyy,0);
                 break;
         }
         currentGameObject = graph.ExecuteGraph().Create();

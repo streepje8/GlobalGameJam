@@ -76,25 +76,25 @@ public class NodeEditor : MonoBehaviour
         }
         visuals = new Dictionary<Node, VisualNode>();
 
-        Vector2 currentXPos = NodesStartingPoint;
-        float left = -1920 / 2f;
-        float right = -left;
-        float top = -1080f / 2f;
-        float bottom = -top;
-        Vector2 dingetjes = new Vector2(left + padding, top + padding);
+        // Vector2 currentXPos = NodesStartingPoint;
+        // float left = -1920 / 2f;
+        // float right = -left;
+        // float top = -1080f / 2f;
+        // float bottom = -top;
+        // Vector2 dingetjes = new Vector2(left + padding, top + padding);
         if (obj != null)
         {
             obj.graph.nodes.ForEach(x =>
             {
                 Instantiate(nodePrefab,nodeSpace).GetComponent<VisualNode>().SetNode(x).Move(dingetjes);
-                dingetjes.x += padding;
-                if (dingetjes.x > right - padding)
-                {
-                    dingetjes.x = left + padding;
-                    dingetjes.y += padding;
-                }
+                // dingetjes.x += padding;
+                // if (dingetjes.x > right - padding)
+                // {
+                //     dingetjes.x = left + padding;
+                //     dingetjes.y += padding;
+                // }
             });
-            FormatFrom(obj.graph.rootNode,NodesStartingPoint);
+            //FormatFrom(obj.graph.rootNode,NodesStartingPoint);
             obj.graph.nodes.ForEach(x =>
             {
                 x.connections.ForEach(y =>
@@ -130,7 +130,7 @@ public class NodeEditor : MonoBehaviour
             float percent = i / (float)rootVN.node.inputs.Count;
             Connection c = rootVN.node.FindConnection(nodeInput);
             newPos.y -= padding * j * 2f;
-            FormatFrom(c.nOutput.node,newPos);
+            if(c?.nOutput?.node != null) FormatFrom(c.nOutput.node,newPos);
         }
     }
 
