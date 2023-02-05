@@ -48,6 +48,7 @@ public class AudioManager : Singleton<AudioManager>
         if (activeSounds.TryGetValue(soundPath.ToLower(), out AudioSource value))
         {
             Destroy(value.gameObject);
+            if(activeSources.Contains(value)) activeSources.Remove(value);
             activeSounds.Remove(soundPath.ToLower());
         }
     }
@@ -71,6 +72,7 @@ public class AudioManager : Singleton<AudioManager>
         for(int i = activeSources.Count - 1; i >= 0; i--)
         {
             AudioSource activeSource = activeSources[i];
+            
             if (!activeSource.isPlaying)
             {
                 Destroy(activeSource.gameObject);
