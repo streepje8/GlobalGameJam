@@ -49,6 +49,22 @@ MonoBehaviour:
   controller: {fileID: 0}
   highResCam: {fileID: 0}
   meshDatabase: {fileID: 2769146452828707597}
+  LightsLevel:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &2769146452828707597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +83,7 @@ MonoBehaviour:
   - {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   - {fileID: 6604138602885514005, guid: 58fd2548d1701a84fa362c1658bcfed4, type: 3}
-  - {fileID: 6131596681922455646, guid: 94bbeaaae736813439a109c79ebc9787, type: 3}
+  - {fileID: -9074487449826874710, guid: a15212a4a7303ed4bb61889961ba5dcd, type: 3}
   materials:
   - {fileID: 2100000, guid: 08ea5996c1973a448a8137094d23eaaa, type: 2}
   - {fileID: 2100000, guid: d0cb2443c2999a243ab7b67f0285badb, type: 2}

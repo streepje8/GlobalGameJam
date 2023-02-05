@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
@@ -7,6 +8,8 @@ public class GameController : Singleton<GameController>
     public FirstPersonController controller;
     public Camera highResCam;
     public MeshDatabase meshDatabase;
+    public List<GameObject> LightsLevel;
+    public GameObject inverseLightsLevel;
 
     private void Awake()
     {

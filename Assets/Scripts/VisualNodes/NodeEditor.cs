@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -73,7 +74,7 @@ public class NodeEditor : MonoBehaviour
         }
         visuals = new Dictionary<Node, VisualNode>();
 
-        float totalPadding = padding;
+        float totalPadding = 100;
         float yPadding = -1080 / 2f / 2f;
         if (obj != null)
         {

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 450083700878556125}
   m_LocalRotation: {x: 0, y: -0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -1.21, y: -0.09000015, z: 0.2397232}
-  m_LocalScale: {x: 0.57632935, y: 0.57632947, z: 0.57632947}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3555882003903483290}
@@ -75,7 +75,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3555882003903483290}
   - component: {fileID: 3555882003903483293}
-  - component: {fileID: 7046660358497254862}
   m_Layer: 3
   m_Name: PIvotParent
   m_TagString: Untagged
@@ -115,19 +114,7 @@ MonoBehaviour:
   openPos: {x: 0, y: 90, z: 0}
   isOpen: 0
   speed: 1
---- !u!65 &7046660358497254862
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3555882003903483292}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.44, y: 3.42, z: 0.37}
-  m_Center: {x: -1.29, y: 0, z: 0}
+  obj: {fileID: 4663532379132909420}
 --- !u!1001 &3555882004739809158
 PrefabInstance:
   m_ObjectHideFlags: 0

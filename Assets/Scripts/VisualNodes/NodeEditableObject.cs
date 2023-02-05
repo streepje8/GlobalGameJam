@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum StartGraph
@@ -6,7 +7,8 @@ public enum StartGraph
     Cylinder,
     Capsule,
     Sphere,
-    PlantDoor
+    PlantDoor,
+    Lights
 }
 
 public class NodeEditableObject : MonoBehaviour, IInteractable
@@ -60,11 +62,26 @@ public class NodeEditableObject : MonoBehaviour, IInteractable
                 graph.Connect(hasDoorHandleNode,0,doorNode,0);
                 graph.Connect(materialInt,0,doorMatNode,0);
                 break;
+            case StartGraph.Lights:
+                graph.rootNode.isLocked = true;
+                LightNode lightNode = new LightNode();
+                IntNode nodeA = new IntNode(0);
+                IntNode nodeB = new IntNode(1);
+                IntNode nodeC = new IntNode(-1);
+                MaterialNode matdisNode = new MaterialNode();
+                VectorNode vecnode = new VectorNode(new Vector3(3,5,1));
+                graph.AddNode(lightNode); graph.AddNode(nodeA); 
+                graph.AddNode(matdisNode); graph.AddNode(vecnode); graph.AddNode(nodeB); graph.AddNode(nodeC);  
+                graph.Connect(lightNode,0,graph.rootNode,0);
+                graph.Connect(nodeA,0,lightNode,0);
+                graph.Connect(nodeB,0,matdisNode,0);
+                break;
         }
         currentGameObject = graph.ExecuteGraph().Create();
         currentGameObject.transform.SetParent(transform);
         currentGameObject.transform.position = transform.position;
         currentGameObject.transform.rotation = transform.rotation;
+        currentGameObject.transform.localScale = transform.localScale;
     }
 
     public void OnInteract()
@@ -79,5 +96,9 @@ public class NodeEditableObject : MonoBehaviour, IInteractable
         currentGameObject.transform.SetParent(transform);
         currentGameObject.transform.position = transform.position;
         currentGameObject.transform.rotation = transform.rotation;
+        currentGameObject.transform.localScale = transform.localScale;
+        OnBuild?.Invoke(currentGameObject);
     }
+
+    public event Action<GameObject> OnBuild;
 }
