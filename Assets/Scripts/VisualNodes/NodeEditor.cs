@@ -76,25 +76,25 @@ public class NodeEditor : MonoBehaviour
         }
         visuals = new Dictionary<Node, VisualNode>();
 
-        // Vector2 currentXPos = NodesStartingPoint;
-        // float left = -1920 / 2f;
-        // float right = -left;
-        // float top = -1080f / 2f;
-        // float bottom = -top;
-        // Vector2 dingetjes = new Vector2(left + padding, top + padding);
+        float totalPadding = 100;
+        float yPadding = -1080 / 2f / 2f;
         if (obj != null)
         {
             obj.graph.nodes.ForEach(x =>
             {
-                Instantiate(nodePrefab,nodeSpace).GetComponent<VisualNode>().SetNode(x).Move(dingetjes);
-                // dingetjes.x += padding;
-                // if (dingetjes.x > right - padding)
-                // {
-                //     dingetjes.x = left + padding;
-                //     dingetjes.y += padding;
-                // }
+                Vector2 pos = NodesStartingPoint - new Vector2(totalPadding, 0);
+                if (pos.x < (-(1920 / 2f) + 300))
+                {
+                    pos.x = (-(1920 / 2f) + 300);
+                    pos.y = yPadding;
+                    yPadding += (1080/2f/2f) * 2f;
+                }
+
+                pos.x = Mathf.Clamp(pos.x, -1920f / 2f,1920f/2f);
+                pos.y = Mathf.Clamp(pos.y, -1080f / 2f,1080f/2f);
+                Instantiate(nodePrefab,nodeSpace).GetComponent<VisualNode>().SetNode(x).Move(pos);
+                totalPadding += padding;
             });
-            //FormatFrom(obj.graph.rootNode,NodesStartingPoint);
             obj.graph.nodes.ForEach(x =>
             {
                 x.connections.ForEach(y =>
@@ -113,24 +113,6 @@ public class NodeEditor : MonoBehaviour
                     con.Init(y);
                 });
             });
-        }
-    }
-
-    private void FormatFrom(Node node, Vector2 nodePos)
-    {
-        VisualNode rootVN = visuals[node];
-        rootVN.Move(nodePos);
-        int i = 0;
-        float j = Mathf.Pow(2f,-(rootVN.node.inputs.Count - 1));
-        if (j > 1) j = 0;
-        float nodePart = 1080f / ((float)rootVN.node.inputs.Count + 1f);
-        Vector2 newPos = nodePos - new Vector2(padding,-(padding * (1/j)));
-        foreach (var nodeInput in rootVN.node.inputs)
-        {
-            float percent = i / (float)rootVN.node.inputs.Count;
-            Connection c = rootVN.node.FindConnection(nodeInput);
-            newPos.y -= padding * j * 2f;
-            if(c?.nOutput?.node != null) FormatFrom(c.nOutput.node,newPos);
         }
     }
 

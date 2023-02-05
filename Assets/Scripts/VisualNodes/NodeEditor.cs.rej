@@ -1,0 +1,10 @@
+diff a/Assets/Scripts/VisualNodes/NodeEditor.cs b/Assets/Scripts/VisualNodes/NodeEditor.cs	(rejected hunks)
+@@ -76,8 +76,6 @@
+         }
+         visuals = new Dictionary<Node, VisualNode>();
+ 
+-        float totalPadding = 100;
+-        float yPadding = -1080 / 2f / 2f;
+         Vector2 currentXPos = NodesStartingPoint;
+         float left = -1920 / 2f;
+         float right = -left;
