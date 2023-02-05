@@ -23,7 +23,7 @@ public class ColliderNode : Node
     {
         if (!hasInitialized)
         {
-            outputs = new List<NOutput>() { new NOutput("Partial Object", typeof(PartialObject), this) };
+            outputs = new List<NOutput>() { new NOutput("Partial Object", typeof(PartialObjectBuild), this) };
             color = Color.magenta;
         }
         hasInitialized = true;

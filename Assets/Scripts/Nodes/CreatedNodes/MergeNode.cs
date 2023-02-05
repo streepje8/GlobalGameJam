@@ -5,8 +5,8 @@ public class MergeNode : Node
 {
     public override List<NInput> inputs { get; } = new List<NInput>()
     {
-        new NInput("Object A", typeof(PartialObject),0),
-        new NInput("Object B", typeof(PartialObject),0) 
+        new NInput("Object A", typeof(PartialObjectBuild),null),
+        new NInput("Object B", typeof(PartialObjectBuild),null) 
     };
     public override List<NOutput> outputs { get; protected set; }
 
@@ -18,8 +18,8 @@ public class MergeNode : Node
     public override object OnExecute()
     {
         MergePartialObject partialObject = new MergePartialObject();
-        partialObject.objA = FindConnection(inputs[0])?.GetData<PartialObject>() ?? new DefaultPartialObject();
-        partialObject.objB = FindConnection(inputs[1])?.GetData<PartialObject>() ?? new DefaultPartialObject();
+        partialObject.objA = FindConnection(inputs[0])?.GetData<PartialObjectBuild>() ?? new DefaultPartialObject().Build();
+        partialObject.objB = FindConnection(inputs[1])?.GetData<PartialObjectBuild>() ?? new DefaultPartialObject().Build();
         return partialObject.Build();
     }
 }
@@ -36,8 +36,8 @@ public class DefaultPartialObject : PartialObject
 
 public class MergePartialObject : PartialObject
 {
-    public PartialObject objA;
-    public PartialObject objB;
+    public PartialObjectBuild objA;
+    public PartialObjectBuild objB;
         
     public override void Create(Transform parent)
     {

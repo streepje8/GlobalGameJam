@@ -81,23 +81,23 @@ public class NodeEditableObject : MonoBehaviour, IInteractable
                 graph.rootNode.isLocked = true;
                 MergeNode mergeNode = new MergeNode();
                 ColliderNode colliderNode = new ColliderNode();
-                VectorNode centerVecNode = new VectorNode(new Vector3(0, 0, 0)); //Change dit
-                VectorNode sizeVecNode = new VectorNode(new Vector3(1, 1, 1)); //Change dit
+                VectorNode centerVecNode = new VectorNode(new Vector3(-1.34f,0,0)); //Change dit
+                VectorNode sizeVecNode = new VectorNode(new Vector3(7.11999989f,0.819999993f,12.5299997f)); //Change dit
                 colliderNode.isLocked = true;
                 WallNode wallNode = new WallNode();
                 VectorNode scaleVecNode = new VectorNode(Vector3.one);
                 MaterialNode wallMatNode = new MaterialNode();
                 IntNode wallMatIndex = new IntNode(1); //Change dit
                 graph.AddNode(mergeNode); graph.AddNode(colliderNode); graph.AddNode(centerVecNode); graph.AddNode(sizeVecNode);
-                graph.AddNode(wallNode); graph.AddNode(scaleVecNode); graph.AddNode(wallNode); graph.AddNode(wallMatNode); graph.AddNode(wallMatIndex);
-                graph.Connect(mergeNode,0,graph.rootNode,0);
-                graph.Connect(colliderNode,0,mergeNode,0);
-                graph.Connect(wallNode,0,mergeNode,1);
-                graph.Connect(centerVecNode,0,colliderNode,0);
-                graph.Connect(sizeVecNode,0,colliderNode,1);
-                graph.Connect(scaleVecNode,0,wallNode,0);
-                graph.Connect(wallMatNode,0,wallNode,1);
-                graph.Connect(wallMatIndex,0,wallMatNode,0);
+                graph.AddNode(wallNode); graph.AddNode(scaleVecNode); graph.AddNode(wallMatNode); graph.AddNode(wallMatIndex);
+                graph.Connect(mergeNode,0,graph.rootNode,0); //Part -> Part
+                graph.Connect(colliderNode,0,mergeNode,0); //Part -> Part
+                graph.Connect(wallNode,0,mergeNode,1); //Part -> Part
+                graph.Connect(centerVecNode,0,colliderNode,0); //Vec3 -> Vec3
+                graph.Connect(sizeVecNode,0,colliderNode,1); //Vec3 -> Vec3
+                graph.Connect(scaleVecNode,0,wallNode,0); //Vec3 -> Vec3
+                graph.Connect(wallMatNode,0,wallNode,1); //Mat -> Mat
+                graph.Connect(wallMatIndex,0,wallMatNode,0); //Int -> Int
                 break;
         }
         currentGameObject = graph.ExecuteGraph().Create();

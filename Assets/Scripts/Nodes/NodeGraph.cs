@@ -18,7 +18,7 @@ public class NodeGraph
     }
 
     public void Connect(Node outputtingNode, int outputID, Node proccesingNode, int inputID) => proccesingNode.connections.Add(new Connection(proccesingNode.inputs[inputID],
-            outputtingNode.outputs[outputID]));
+            outputtingNode.outputs[outputID],proccesingNode));
 
     public ConstructedObject ExecuteGraph() => rootNode.Execute<ConstructedObject>().Item2;
 }

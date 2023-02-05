@@ -27,6 +27,7 @@ public class IOComponent : MonoBehaviour,
     {
         { typeof(Vector3), Color.magenta },
         { typeof(PartialObject), Color.green},
+        { typeof(PartialObjectBuild), Color.green},
         { typeof(ConstructedObject), Color.green},
         { typeof(float), Color.blue},
         { typeof(int), Color.cyan}
