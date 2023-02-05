@@ -65,6 +65,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  inverseLightsLevel: {fileID: 0}
+  lightsMaterial: {fileID: 2100000, guid: 49b824f2df6eff34584c95d8fcceeb1f, type: 2}
 --- !u!114 &2769146452828707597
 MonoBehaviour:
   m_ObjectHideFlags: 0

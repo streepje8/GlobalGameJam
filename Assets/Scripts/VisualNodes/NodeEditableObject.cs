@@ -8,7 +8,8 @@ public enum StartGraph
     Capsule,
     Sphere,
     PlantDoor,
-    Lights
+    Lights,
+    Wall
 }
 
 public class NodeEditableObject : MonoBehaviour, IInteractable
@@ -75,6 +76,28 @@ public class NodeEditableObject : MonoBehaviour, IInteractable
                 graph.Connect(lightNode,0,graph.rootNode,0);
                 graph.Connect(nodeA,0,lightNode,0);
                 graph.Connect(nodeB,0,matdisNode,0);
+                break;
+            case StartGraph.Wall:
+                graph.rootNode.isLocked = true;
+                MergeNode mergeNode = new MergeNode();
+                ColliderNode colliderNode = new ColliderNode();
+                VectorNode centerVecNode = new VectorNode(new Vector3(0, 0, 0)); //Change dit
+                VectorNode sizeVecNode = new VectorNode(new Vector3(1, 1, 1)); //Change dit
+                colliderNode.isLocked = true;
+                WallNode wallNode = new WallNode();
+                VectorNode scaleVecNode = new VectorNode(Vector3.one);
+                MaterialNode wallMatNode = new MaterialNode();
+                IntNode wallMatIndex = new IntNode(1); //Change dit
+                graph.AddNode(mergeNode); graph.AddNode(colliderNode); graph.AddNode(centerVecNode); graph.AddNode(sizeVecNode);
+                graph.AddNode(wallNode); graph.AddNode(scaleVecNode); graph.AddNode(wallNode); graph.AddNode(wallMatNode); graph.AddNode(wallMatIndex);
+                graph.Connect(mergeNode,0,graph.rootNode,0);
+                graph.Connect(colliderNode,0,mergeNode,0);
+                graph.Connect(wallNode,0,mergeNode,1);
+                graph.Connect(centerVecNode,0,colliderNode,0);
+                graph.Connect(sizeVecNode,0,colliderNode,1);
+                graph.Connect(scaleVecNode,0,wallNode,0);
+                graph.Connect(wallMatNode,0,wallNode,1);
+                graph.Connect(wallMatIndex,0,wallMatNode,0);
                 break;
         }
         currentGameObject = graph.ExecuteGraph().Create();

@@ -12,6 +12,7 @@ public class LightNode : Node
     public override void Init()
     {
         GameController.Instance.LightsLevel.ForEach(x => x.SetActive(true));
+        //GameController.Instance.lightsMaterial.SetFloat("_EmissiveIntensity",0f);
         outputs = new List<NOutput>() { new NOutput("Light Object", typeof(PartialObject), this) };
     }
 
@@ -34,11 +35,13 @@ public class LightPartialObject : PartialObject
         {
             GameController.Instance.LightsLevel.ForEach(x => x.SetActive(true));
             GameController.Instance.inverseLightsLevel.SetActive(false);
+            //GameController.Instance.lightsMaterial.SetFloat("_EmissiveIntensity",100000f);
         }
         else
         {
             GameController.Instance.LightsLevel.ForEach(x => x.SetActive(false));
             GameController.Instance.inverseLightsLevel.SetActive(true);
+            //GameController.Instance.lightsMaterial.SetFloat("_EmissiveIntensity",0f);
         }
     }
 }
