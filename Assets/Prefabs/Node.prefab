@@ -96,7 +96,7 @@ MonoBehaviour:
   - {fileID: 7020170191968166603}
   - {fileID: 7020170191817590508}
   nodeColor: {r: 0, g: 0.9052415, b: 1, a: 1}
-  padding: 20
+  padding: 40
   InputPrefab: {fileID: 9151137691741567019, guid: 25b02447199e0ce40bbb882cefeaefa1,
     type: 3}
   OuputPrefab: {fileID: 4199316879796744119, guid: 83ea633e3b9067046879b32fdf1dc2e5,

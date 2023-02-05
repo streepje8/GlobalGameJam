@@ -32,16 +32,17 @@ public abstract class Node
 
     public Connection FindConnection(NInput i)
     {
-        return connections.FirstOrDefault(x => x.nInput == i);
+        return connections.FirstOrDefault(x => x.nInput.name.Equals(i.name,StringComparison.OrdinalIgnoreCase));
     }
 
     public int FindOutputID(NOutput output)
     {
-        foreach (var nOutput in outputs)
+        for(int i = 0; i < outputs.Count; i++)
         {
-            if (nOutput.guid.ToString().Equals(output.guid.ToString(), StringComparison.OrdinalIgnoreCase))
+            NOutput nOutput = outputs[i];
+            if (nOutput.name.Equals(output.name, StringComparison.OrdinalIgnoreCase))
             {
-                return outputs.IndexOf(nOutput);
+                return i;
             }
         }
         Debug.LogWarning("Failed to bind an output ID!");
@@ -50,11 +51,12 @@ public abstract class Node
 
     public int FindInputID(NInput input)
     {
-        foreach (var nInput in inputs)
+        for(int i = 0; i < inputs.Count; i++)
         {
-            if (nInput.guid.ToString().Equals(input.guid.ToString(), StringComparison.OrdinalIgnoreCase))
+            NInput nInput = inputs[i];
+            if (nInput.name.Equals(input.name, StringComparison.OrdinalIgnoreCase))
             {
-                return inputs.IndexOf(nInput);
+                return i;
             }
         }
         Debug.LogWarning("Failed to bind an input ID!");

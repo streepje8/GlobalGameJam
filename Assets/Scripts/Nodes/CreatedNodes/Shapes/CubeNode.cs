@@ -21,12 +21,8 @@ public class CubeNode : Node
     
     public override void Init()
     {
-        if (!hasInitialized)
-        {
-            outputs = new List<NOutput>() { new NOutput("Partial Object", typeof(PartialObject), this) };
-            color = Color.green;
-        }
-        hasInitialized = true;
+        outputs = new List<NOutput>() { new NOutput("Partial Object", typeof(PartialObject), this) };
+        color = Color.green;
     }
 
     public override object OnExecute()

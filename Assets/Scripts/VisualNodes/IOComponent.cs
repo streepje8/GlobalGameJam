@@ -28,12 +28,13 @@ public class IOComponent : MonoBehaviour,
         { typeof(Vector3), Color.magenta },
         { typeof(PartialObject), Color.green},
         { typeof(ConstructedObject), Color.green},
-        { typeof(float), Color.blue}
+        { typeof(float), Color.blue},
+        { typeof(int), Color.cyan}
     };
 
     public void Init()
     {
-        Type t = input?.type ?? output.expectedType;
+        Type t = type == IO.Input ? input.type : output.expectedType;
         if (colors.Keys.Contains(t)) cirkel.color = colors[t];
     }
     

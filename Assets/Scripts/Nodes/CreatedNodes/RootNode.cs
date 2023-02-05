@@ -6,6 +6,8 @@ public class RootNode : Node
     public override List<NInput> inputs { get; } = new List<NInput>() { new NInput("Final Object", typeof(PartialObject)) };
     public override List<NOutput> outputs { get; protected set; } = new List<NOutput>();
 
+    public RootNode() { isLocked = true; }
+
     public override object OnExecute()
     {
         ConstructedObject endResult = new ConstructedObject();

@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graph:
     rootNode:
+      isLocked: 0
       color: {r: 0, g: 0, b: 1, a: 1}
       isInitialized: 0
   startGraphID: 0
@@ -316,6 +317,8 @@ MonoBehaviour:
   - {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   - {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  materials:
+  - {fileID: 2100000, guid: 08ea5996c1973a448a8137094d23eaaa, type: 2}
 --- !u!114 &652913437 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7392199853224098932, guid: f2f3f7cfd7f5fb747b2af6559434cf69,
@@ -787,7 +790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2011440185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graph:
     rootNode:
+      isLocked: 0
       color: {r: 0, g: 0, b: 1, a: 1}
       isInitialized: 0
   startGraphID: 2
@@ -851,7 +855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2097526121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -866,6 +870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   graph:
     rootNode:
+      isLocked: 0
       color: {r: 0, g: 0, b: 1, a: 1}
       isInitialized: 0
   startGraphID: 1
@@ -1063,11 +1068,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5026187659970703746, guid: f2f3f7cfd7f5fb747b2af6559434cf69,
-        type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 7392199853322467868, guid: f2f3f7cfd7f5fb747b2af6559434cf69,
         type: 3}
       propertyPath: m_IsActive

@@ -13,7 +13,7 @@ public class NodeGraph
 
     public void AddNode(Node n)
     {
-        if(!n.isInitialized) n.Init();
+        if(!n.isInitialized) {n.Init(); n.isInitialized = true; }
         nodes.Add(n);
     }
 

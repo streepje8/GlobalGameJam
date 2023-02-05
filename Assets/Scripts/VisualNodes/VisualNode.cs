@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -42,18 +43,23 @@ public class VisualNode : MonoBehaviour
         ((RectTransform)transform).localPosition = Vector3.Lerp(((RectTransform)transform).localPosition, goalPos, 30f * Time.deltaTime);
     }
 
-    private Dictionary<string, IOComponent> niocIn = new Dictionary<string, IOComponent>();
-    private Dictionary<string, IOComponent> niocOut = new Dictionary<string, IOComponent>();
+    private Dictionary<int, IOComponent> niocIn = new Dictionary<int, IOComponent>();
+    private Dictionary<int, IOComponent> niocOut = new Dictionary<int, IOComponent>();
     
     public IOComponent GetIOC(NInput NIn)
     {
-        if (niocIn.TryGetValue(NIn.guid.ToString(), out IOComponent val)) return val;
+        int index = -1;
+        for (var i = 0; i < node.inputs.Count; i++)
+        {
+            if (node.inputs[i].name.Equals(NIn.name,StringComparison.OrdinalIgnoreCase)) index = i;
+        }
+        if (niocIn.TryGetValue(index, out IOComponent val)) return val;
         return null;
     }
 
     public IOComponent GetIOC(NOutput NOut)
     {
-        if (niocOut.TryGetValue(NOut.guid.ToString(), out IOComponent val)) return val;
+        if (niocOut.TryGetValue(node.outputs.IndexOf(NOut), out IOComponent val)) return val;
         return null;
     }
 
@@ -71,29 +77,31 @@ public class VisualNode : MonoBehaviour
         //Do the controlls
         settingsArea.sizeDelta = Vector2.zero;
 
-        niocIn = new Dictionary<string, IOComponent>();
-        niocOut = new Dictionary<string, IOComponent>();
+        niocIn = new Dictionary<int, IOComponent>();
+        niocOut = new Dictionary<int, IOComponent>();
 
-        node.inputs.ForEach(x =>
+        for (var i = 0; i < node.inputs.Count; i++)
         {
+            NInput x = node.inputs[i];
             IOComponent IOC = Instantiate(InputPrefab, IOArea).GetComponent<IOComponent>();
+            niocIn.Add(i,IOC);
             IOC.type = IO.Input;
             IOC.label.text = x.name;
             IOC.input = x;
             IOC.node = node;
             IOC.Init();
-            niocIn.Add(x.guid.ToString(),IOC);
-        });
-        node.outputs.ForEach(x =>
+        }
+        for (var i = 0; i < node.outputs.Count; i++)
         {
+            NOutput x = node.outputs[i];
             IOComponent IOC = Instantiate(OuputPrefab, IOArea).GetComponent<IOComponent>();
+            niocOut.Add(i,IOC);
             IOC.type = IO.Output;
             IOC.label.text = x.name;
             IOC.output = x;
             IOC.node = node;
             IOC.Init();
-            niocOut.Add(x.guid.ToString(),IOC);
-        });
+        }
 
         images.ForEach(x => x.color = nodeColor);
         RectTransform rectTransform = (RectTransform)transform;

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +28,7 @@ public class NodeEditor : MonoBehaviour
             isOpen = false;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            connectionInProgressLine.enabled = false;
         }
 
         if (currentConnector != null)
@@ -74,11 +74,19 @@ public class NodeEditor : MonoBehaviour
         visuals = new Dictionary<Node, VisualNode>();
 
         float totalPadding = padding;
+        float yPadding = -1080 / 2f / 2f;
         if (obj != null)
         {
             obj.graph.nodes.ForEach(x =>
             {
-                Instantiate(nodePrefab,nodeSpace).GetComponent<VisualNode>().SetNode(x).Move(NodesStartingPoint - new Vector2(totalPadding,0));
+                Vector2 pos = NodesStartingPoint - new Vector2(totalPadding, 0);
+                if (pos.x < (-(1920 / 2f) + 300))
+                {
+                    pos.x = (-(1920 / 2f) + 300);
+                    pos.y = yPadding;
+                    yPadding += (1080/2f/2f) * 2f;
+                }
+                Instantiate(nodePrefab,nodeSpace).GetComponent<VisualNode>().SetNode(x).Move(pos);
                 totalPadding += padding;
             });
             obj.graph.nodes.ForEach(x =>
@@ -104,18 +112,20 @@ public class NodeEditor : MonoBehaviour
 
     public void FinishConnection(IOComponent ioComponent)
     {
-        isConnecting = false;
-        connectionInProgressLine.enabled = false;
         IOComponent end = currentConnector;
         IOComponent start = ioComponent;
-        currentConnector = null;
-
-        Node endNode = end.node;
-        Node startNode = start.node;
         NInput input = start.input;
         NOutput output = end.output;
-        if(input.type == output.expectedType)
-            obj.graph.Connect(endNode,endNode.FindOutputID(output),startNode,startNode.FindInputID(input));
-        RegenerateUI();
+        connectionInProgressLine.enabled = false;
+        if (input.type == output.expectedType && !end.Connected)
+        {
+            isConnecting = false;
+            connectionInProgressLine.enabled = false;
+            currentConnector = null;
+            Node endNode = end.node;
+            Node startNode = start.node;
+            obj.graph.Connect(endNode, endNode.FindOutputID(output), startNode, startNode.FindInputID(input));
+            RegenerateUI();
+        }
     }
 }
