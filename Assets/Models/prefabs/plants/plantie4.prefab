@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5280493977178177189}
   - component: {fileID: 9144505024536408320}
   - component: {fileID: 6414033615685191114}
+  - component: {fileID: 3695939899760688444}
   m_Layer: 0
   m_Name: plantie4
   m_TagString: Untagged
@@ -25,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4756863227881268255}
-  m_LocalRotation: {x: 0.25137627, y: 0.21500193, z: 0.6762618, w: 0.6582204}
+  m_LocalRotation: {x: 0.2513808, y: 0.21500294, z: 0.67626023, w: 0.65822005}
   m_LocalPosition: {x: -3.1, y: 2.41, z: 4.62}
-  m_LocalScale: {x: 0.2255814, y: 0.2255814, z: 0.2255814}
+  m_LocalScale: {x: 0.23865755, y: 0.23865756, z: 0.23865756}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3695939899760688444
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756863227881268255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 28.88216, y: 2.9853039, z: 12.997992}
+  m_Center: {x: 0.000001997865, y: -8.105297e-10, z: 0.1888939}
