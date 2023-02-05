@@ -30,6 +30,7 @@ public class NodeEditor : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             connectionInProgressLine.enabled = false;
+            AudioManager.Instance?.PlaySoundGlobal("unselect");
         }
 
         if (currentConnector != null)
@@ -63,6 +64,7 @@ public class NodeEditor : MonoBehaviour
         Cursor.visible = true;
         RegenerateUI();
         GameController.Instance.controller.enabled = false;
+        AudioManager.Instance?.PlaySoundGlobal("scanning");
         isOpen = true;
     }
 

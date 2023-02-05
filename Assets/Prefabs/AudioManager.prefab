@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1145739048425056066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1145739048425056064}
+  - component: {fileID: 1145739048425056065}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1145739048425056064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145739048425056066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1145739048425056065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145739048425056066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d06d81e0415614a8cbc543b9cb6b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highResCam: {fileID: 0}
+  sounds:
+  - path: grow
+    clip: {fileID: 8300000, guid: e4de8a17906742a4f8b063fdd3973250, type: 3}
+  - path: lightcrash
+    clip: {fileID: 8300000, guid: e9545fdf1e00d8e4aa4ab6aab5233852, type: 3}
+  - path: spookysound
+    clip: {fileID: 8300000, guid: 51e3feb77bd8062488b443c0168d21a2, type: 3}
+  - path: planttheme
+    clip: {fileID: 8300000, guid: d6a8df84332780f40a9a8a79d01c00fb, type: 3}
+  - path: scanning
+    clip: {fileID: 8300000, guid: cba87bbda535da042a493e340dfced9e, type: 3}
+  - path: theme
+    clip: {fileID: 8300000, guid: f00faa30a8fac0949a62385f45c4d8a6, type: 3}
+  - path: unselect
+    clip: {fileID: 8300000, guid: 4177533588db48940870baf9bd14a880, type: 3}
+  - path: waterdrips
+    clip: {fileID: 8300000, guid: c084f2aebf810e54f9625de6995d03c5, type: 3}
+  - path: weirdnoise
+    clip: {fileID: 8300000, guid: 3f17ecd3a99988a458d14dba9405bcf6, type: 3}
+  - path: yes
+    clip: {fileID: 8300000, guid: d2eb1473f063d674b97a13977c3c2d87, type: 3}
