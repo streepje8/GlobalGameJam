@@ -92,7 +92,7 @@ public class NodeEditor : MonoBehaviour
 
                 pos.x = Mathf.Clamp(pos.x, -1920f / 2f,1920f/2f);
                 pos.y = Mathf.Clamp(pos.y, -1080f / 2f,1080f/2f);
-                Instantiate(nodePrefab,nodeSpace).GetComponent<VisualNode>().SetNode(x).Move(pos);
+                Instantiate(nodePrefab,nodeSpace).GetComponent<VisualNode>().Move(pos).SetNode(x);
                 totalPadding += padding;
             });
             obj.graph.nodes.ForEach(x =>

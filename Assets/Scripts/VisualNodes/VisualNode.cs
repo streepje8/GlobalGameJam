@@ -25,6 +25,7 @@ public class VisualNode : MonoBehaviour
     private void Awake()
     {
         goalPos = ((RectTransform)transform).localPosition;
+        if (node != null && node.hadVisualBefore) goalPos = node.lastPosition;
     }
 
     public VisualNode SetNode(Node n)
@@ -41,6 +42,8 @@ public class VisualNode : MonoBehaviour
     private void Update()
     {
         ((RectTransform)transform).localPosition = Vector3.Lerp(((RectTransform)transform).localPosition, goalPos, 30f * Time.deltaTime);
+        node.lastPosition = ((RectTransform)transform).localPosition;
+        node.hadVisualBefore = true;
     }
 
     private Dictionary<int, IOComponent> niocIn = new Dictionary<int, IOComponent>();
@@ -111,11 +114,13 @@ public class VisualNode : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x,settingsArea.sizeDelta.y + IOYdelta + 50 + padding + padding);
         IOArea.transform.localPosition -= Vector3.up * (settingsArea.sizeDelta.y + padding);
         nodeName.text = node.GetType().Name;
+        if (node.hadVisualBefore) goalPos = node.lastPosition;
     }
 
-    public void Move(Vector2 eventDataDelta)
+    public VisualNode Move(Vector2 eventDataDelta)
     {
         eventDataDelta.y -= ((RectTransform)transform).sizeDelta.y / 2f - 10f;
         goalPos = eventDataDelta;
+        return this;
     }
 }

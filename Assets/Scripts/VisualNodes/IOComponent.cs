@@ -55,6 +55,10 @@ public class IOComponent : MonoBehaviour,
                         {
                             connection.Disconnect();
                             GameController.Instance.editor.RegenerateUI();
+                            if (GameController.Instance.editor.isConnecting)
+                            {
+                                GameController.Instance.editor.FinishConnection(this);
+                            }
                         }
                         else
                         {
@@ -71,7 +75,11 @@ public class IOComponent : MonoBehaviour,
                     {
                         GameController.Instance.editor.StartConnection(this);
                     }
-
+                    else
+                    {
+                        connection.Disconnect();
+                        GameController.Instance.editor.RegenerateUI();
+                    }
                     break;
             }
     }

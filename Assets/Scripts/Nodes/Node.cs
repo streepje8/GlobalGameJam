@@ -12,6 +12,8 @@ public abstract class Node
     public abstract List<NOutput> outputs { get; protected set; }
     public List<Connection> connections = new List<Connection>();
     public bool isInitialized = false;
+    public Vector3 lastPosition = Vector3.zero;
+    public bool hadVisualBefore = false;
 
     public Tuple<bool,T> Execute<T>()
     {
