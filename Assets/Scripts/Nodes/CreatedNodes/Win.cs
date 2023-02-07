@@ -15,6 +15,6 @@ public class Win : Node
     public override object OnExecute()
     {
         if (connections.Count > 1) SceneManager.LoadScene(0);
-        return 1;
+        return new PartialObject().Build();
     }
 }

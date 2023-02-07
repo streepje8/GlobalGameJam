@@ -24,7 +24,7 @@ public abstract class Node
             result = (T)OnExecute();
             wasUnsafe = false;
         }
-        catch (InvalidCastException) { wasUnsafe = true; Debug.LogError("Oopsie woopsie, the code is stukkie wukkie! Deze nodes hadden nooit geconnect moeten zijn ＼（〇_ｏ）／");}
+        catch (InvalidCastException e) { wasUnsafe = true; Debug.LogError("Oopsie woopsie, the code is stukkie wukkie! Deze nodes hadden nooit geconnect moeten zijn ＼（〇_ｏ）／"); Debug.LogException(e);}
         return new Tuple<bool, T>(wasUnsafe,result);
     }
 

@@ -84,7 +84,6 @@ public class NodeEditableObject : MonoBehaviour, IInteractable
                 ColliderNode colliderNode = new ColliderNode();
                 VectorNode centerVecNode = new VectorNode(new Vector3(-1.34f,0,0)); //Change dit
                 VectorNode sizeVecNode = new VectorNode(new Vector3(7.11999989f,0.819999993f,12.5299997f)); //Change dit
-                colliderNode.isLocked = true;
                 WallNode wallNode = new WallNode();
                 VectorNode scaleVecNode = new VectorNode(Vector3.one);
                 MaterialNode wallMatNode = new MaterialNode();
@@ -105,7 +104,7 @@ public class NodeEditableObject : MonoBehaviour, IInteractable
                 Congrats cccc = new Congrats();
                 You yyyy = new You();
                 Win wwww = new Win();
-                graph.AddNode(cccc); graph.AddNode(yyyy); graph.AddNode(wwww);
+                graph.AddNode(wwww); graph.AddNode(yyyy); graph.AddNode(cccc);
                 graph.Connect(wwww,0,graph.rootNode,0);
                 graph.Connect(yyyy,0,wwww,0);
                 graph.Connect(cccc,0,yyyy,0);

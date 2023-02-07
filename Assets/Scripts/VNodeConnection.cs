@@ -60,11 +60,14 @@ public class VNodeConnection : MonoBehaviour
         return p;
     }
     */
-    public void Disconnect()
+    public void Disconnect(bool isOutput = false)
     {
-        connection.Disconnect(start.node);
-        start.SetConnected(false);
-        end.SetConnected(false);
-        Destroy(gameObject);
+        if (!isOutput || !end.node.isLocked)
+        {
+            connection.Disconnect(start.node);
+            start.SetConnected(false);
+            end.SetConnected(false);
+            Destroy(gameObject);
+        }
     }
 }

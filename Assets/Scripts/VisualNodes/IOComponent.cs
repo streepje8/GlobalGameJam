@@ -77,7 +77,7 @@ public class IOComponent : MonoBehaviour,
                     }
                     else
                     {
-                        connection.Disconnect();
+                        connection.Disconnect(true);
                         GameController.Instance.editor.RegenerateUI();
                     }
                     break;

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class NodeEditor : MonoBehaviour
@@ -18,7 +19,8 @@ public class NodeEditor : MonoBehaviour
     public bool isConnecting = false;
 
     private IOComponent currentConnector;
-    
+    private float lockCursorDelayed = 0;
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && obj != null) {
@@ -27,10 +29,19 @@ public class NodeEditor : MonoBehaviour
             obj = null; RegenerateUI();
             GameController.Instance.controller.enabled = true;
             isOpen = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            lockCursorDelayed = 0.5f;
             connectionInProgressLine.enabled = false;
             AudioManager.Instance?.PlaySoundGlobal("unselect");
+        }
+        if (lockCursorDelayed > 0f)
+        {
+            lockCursorDelayed -= Time.deltaTime;
+        }
+        if (lockCursorDelayed <= 0 && lockCursorDelayed > -20f)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            lockCursorDelayed = -50f;
         }
 
         if (currentConnector != null)
