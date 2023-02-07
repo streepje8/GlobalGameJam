@@ -47,5 +47,6 @@ public class MeshPartialObject : PartialObject
         mr.material = mat;
         MeshFilter filter = myHolder.AddComponent<MeshFilter>();
         filter.mesh = mesh; filter.sharedMesh = mesh;
+        myHolder.transform.localScale = scale;
     }
 }

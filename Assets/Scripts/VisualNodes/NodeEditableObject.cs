@@ -88,8 +88,8 @@ public class NodeEditableObject : MonoBehaviour, IInteractable
                 VectorNode scaleVecNode = new VectorNode(Vector3.one);
                 MaterialNode wallMatNode = new MaterialNode();
                 IntNode wallMatIndex = new IntNode(1); //Change dit
-                graph.AddNode(mergeNode); graph.AddNode(colliderNode); graph.AddNode(centerVecNode); graph.AddNode(sizeVecNode);
-                graph.AddNode(wallNode); graph.AddNode(scaleVecNode); graph.AddNode(wallMatNode); graph.AddNode(wallMatIndex);
+                graph.AddNode(mergeNode); graph.AddNode(colliderNode); graph.AddNode(wallNode); graph.AddNode(centerVecNode); graph.AddNode(sizeVecNode);
+                graph.AddNode(wallMatNode); graph.AddNode(wallMatIndex); graph.AddNode(scaleVecNode);
                 graph.Connect(mergeNode,0,graph.rootNode,0); //Part -> Part
                 graph.Connect(colliderNode,0,mergeNode,0); //Part -> Part
                 graph.Connect(wallNode,0,mergeNode,1); //Part -> Part
